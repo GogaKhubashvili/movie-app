@@ -1,0 +1,31 @@
+<main>
+  @if(loader){
+  <app-loader></app-loader>
+  }
+  <!--  -->
+  @if (movies.length > 0) {
+  <h2>Results:</h2>
+  <section>
+    @for (movie of movies; track movie.id) {
+    <div class="movie-div">
+      <img
+        (click)="goToMovieDetails(movie.id)"
+        [src]="'https://image.tmdb.org/t/p/w500' + movie!.poster_path"
+        alt="{{ movie!.title }}"
+        (error)="onImageError($event)"
+      />
+      <p class="rating">
+        <strong>Rating:</strong> {{ movie!.vote_average.toFixed(1) }}
+      </p>
+      <div class="movie-info">
+        <h4 (click)="goToMovieDetails(movie.id)">{{ movie!.title }}</h4>
+        <p><strong>Release:</strong> {{ movie!.release_date }}</p>
+        <!-- <p>{{ movie.overview | twentyWords }}</p> -->
+      </div>
+    </div>
+    }
+  </section>
+  }@else if(movies.length === 0 && !loader){
+  <p>No results found.</p>
+  }
+</main>

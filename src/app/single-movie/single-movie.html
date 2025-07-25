@@ -1,0 +1,70 @@
+<div class="single-movie-container">
+  <button class="back-button" (click)="goBack()">&#x2190; Go Back</button>
+
+  @if (loading()) {
+  <app-loader></app-loader>
+  } @else if (error()) {
+  <p class="status-message error-message">{{ error() }}</p>
+  }
+
+  <!--  -->
+  @if (movieDetails()) {
+  <div class="movie-detail-card">
+    <img
+      [src]="'https://image.tmdb.org/t/p/w500' + movieDetails()!.poster_path"
+      alt="{{ movieDetails()!.title }} Poster"
+      class="detail-poster"
+      (error)="onImageError($event)"
+    />
+    <div class="detail-info">
+      <h2>{{ movieDetails()!.title }}</h2>
+      @if (movieDetails()!.tagline) {
+      <p class="tagline">{{ movieDetails()!.tagline }}</p>
+      }
+      <p><strong>Release Date:</strong> {{ movieDetails()!.release_date }}</p>
+      <p><strong>Runtime:</strong> {{ movieDetails()!.runtime }} minutes</p>
+      <p>
+        <strong>Rating:</strong>
+        {{ movieDetails()!.vote_average | number : "1.1-1" }} ({{
+          movieDetails()!.vote_count
+        }}
+        votes)
+      </p>
+      <p>
+        <strong>Genres:</strong>
+        @for (genre of movieDetails()!.genres; track genre.id) {
+        {{ genre.name }}{{ $last ? "" : ", " }}
+        }
+      </p>
+      <p class="overview-text scroll">
+        @if (movieDetails()!.isOverviewExpanded) {
+        {{ movieDetails()!.overview }}
+        <span class="more-indicator" (click)="toggleOverview(movieDetails())"
+          >Less</span
+        >
+        } @else {
+        {{ movieDetails()!.overview | twentyWords }}
+        @if (isOverviewTruncated(movieDetails()!.overview)) {
+        <span class="more-indicator" (click)="toggleOverview(movieDetails())"
+          >More</span
+        >
+        } }
+      </p>
+
+      <!--  -->
+      @if (movieDetails()!.homepage) {
+      <p>
+        <a
+          [href]="movieDetails()!.homepage"
+          target="_blank"
+          class="homepage-link"
+          >Visit Homepage</a
+        >
+      </p>
+      }
+    </div>
+  </div>
+  }
+</div>
+
+<app-cast [singleMovieDatails]="movieDetails()"></app-cast>

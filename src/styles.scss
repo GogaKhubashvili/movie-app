@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Bitcount Prop Single", "Segoe UI", Tahoma, Geneva, Verdana,
+    sans-serif;
+  color: white;
+}
+
+body {
+  height: 100vh;
+  background-color: rgb(22, 19, 19);
+  padding: 10px;
+}
+
+button {
+  cursor: pointer;
+  background-color: black;
+  border-radius: 10px;
+  padding: 5px 20px;
+  border: 1px lightgreen solid;
+  transition: all 0.15s ease-in-out;
+
+  &:hover {
+    background-color: lightgreen;
+    color: rgb(22, 19, 19);
+  }
+
+  &:active {
+    background-color: rgba(144, 238, 144, 0.505);
+  }
+}

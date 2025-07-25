@@ -1,0 +1,109 @@
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  h1 {
+    color: #277bc7;
+  }
+}
+
+section {
+  padding: 10px;
+  border-radius: 10px;
+  // border: 2px lightgreen solid;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.actor-info {
+  transition: all 0.15s ease-in-out;
+  border: 2px lightgreen solid;
+  justify-content: center;
+
+  .one-info {
+    display: flex;
+    gap: 10px;
+
+    .title-info {
+      color: #277bc7;
+    }
+  }
+
+  img {
+    width: 150px;
+  }
+}
+
+@media (max-width: 600px) {
+  .actor-info {
+    font-size: 13px;
+
+    .actor-full-info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .one-info {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+  }
+}
+
+.bio-info {
+  border: 2px lightgreen solid;
+  justify-content: center;
+  flex-direction: column;
+
+  h2 {
+    color: #277bc7;
+  }
+
+  .more {
+    color: lightgreen;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.actor-movies {
+  max-height: 340px;
+  overflow-x: scroll;
+  padding: 10px 0;
+
+  &::-webkit-scrollbar {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(144, 238, 144, 0.705);
+    border-radius: 100px;
+  }
+
+  .single-movie {
+    cursor: pointer;
+    height: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid lightgreen;
+    transition: all 0.15s ease-in-out;
+
+    &:hover {
+      box-shadow: inset 0 0 5px lightgreen;
+      background-color: rgba(144, 238, 144, 0.318);
+      transform: scale(1.02);
+    }
+
+    img {
+      width: 120px;
+      height: 180px;
+      object-fit: cover;
+    }
+  }
+}

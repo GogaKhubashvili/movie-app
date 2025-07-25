@@ -1,0 +1,137 @@
+<app-search (searchSubmitted)="handleSearch($event)"></app-search>
+
+<!-- POPULAR MOVIES -->
+<h1 class="h1">Popular Movies:</h1>
+<section class="all-movies">
+  @for(popularMovie of popularMovieDetails()?.results; track popularMovie.id){
+  <div class="single-movie">
+    <img
+      class="poster"
+      [src]="'https://image.tmdb.org/t/p/w500' + popularMovie?.poster_path"
+      alt="poster path"
+    />
+
+    <button class="play-btn">
+      <img
+        class="play"
+        src="play-arrow-icon.png"
+        alt="play icon"
+        (click)="goToTrailerPage(popularMovie.id)"
+      />
+
+      <p class="play-text">Play Trailer</p>
+    </button>
+
+    <div>
+      <h4 class="title">{{ popularMovie?.title }}</h4>
+      <p class="date">{{ popularMovie?.release_date }}</p>
+    </div>
+
+    <button class="pop-btn">
+      <p class="text">Popularity</p>
+      <p class="popularity">{{ (popularMovie?.popularity).toFixed() }}</p>
+    </button>
+
+    <button class="rating-btn">
+      <p class="text">Rating</p>
+      <p class="rating">{{ (popularMovie?.vote_average).toFixed(1) }}</p>
+    </button>
+  </div>
+  }
+
+  <button class="more-movie">
+    <span>More Movies</span>
+    <img src="arrow.png" alt="arrow-icon" />
+  </button>
+</section>
+
+<!-- NEW MOVIES -->
+<h1 class="h1">New Movies:</h1>
+<section class="all-movies">
+  @for(newMovie of newMovieDetails()?.results; track newMovie.id){
+  <div class="single-movie">
+    <img
+      class="poster"
+      [src]="'https://image.tmdb.org/t/p/w500' + newMovie?.poster_path"
+      alt="poster path"
+    />
+
+    <button class="play-btn">
+      <img
+        class="play"
+        src="play-arrow-icon.png"
+        alt="play icon"
+        (click)="goToTrailerPage(newMovie.id)"
+      />
+
+      <p class="play-text">Play Trailer</p>
+    </button>
+
+    <div>
+      <h4 class="title">{{ newMovie?.title }}</h4>
+      <p class="date">{{ newMovie?.release_date }}</p>
+    </div>
+
+    <button class="pop-btn">
+      <p class="text">Popularity</p>
+      <p class="popularity">{{ (newMovie?.popularity).toFixed() }}</p>
+    </button>
+
+    <button class="rating-btn">
+      <p class="text">Rating</p>
+      <p class="rating">{{ (newMovie?.vote_average).toFixed(1) }}</p>
+    </button>
+  </div>
+  }
+
+  <button class="more-movie">
+    <span>More Movies</span>
+    <img src="arrow.png" alt="arrow-icon" />
+  </button>
+</section>
+
+<!-- UPCOMING MOVIES -->
+<h1 class="h1">Upcoming Movies:</h1>
+<section class="all-movies">
+  @for(upcomingMovie of upcomingMovieDetails()?.results; track
+  upcomingMovie.id){
+  <div class="single-movie">
+    <img
+      class="poster"
+      [src]="'https://image.tmdb.org/t/p/w500' + upcomingMovie?.poster_path"
+      alt="poster path"
+    />
+
+    <button class="play-btn">
+      <img
+        class="play"
+        src="play-arrow-icon.png"
+        alt="play icon"
+        (click)="goToTrailerPage(upcomingMovie.id)"
+      />
+
+      <p class="play-text">Play Trailer</p>
+    </button>
+
+    <div>
+      <h4 class="title">{{ upcomingMovie?.title }}</h4>
+      <p class="date">{{ upcomingMovie?.release_date }}</p>
+    </div>
+
+    <button class="pop-btn">
+      <p class="text">Popularity</p>
+      <p class="popularity">{{ (upcomingMovie?.popularity).toFixed() }}</p>
+    </button>
+
+    <button class="rating-btn">
+      <p class="text">Rating</p>
+      <p class="rating">{{ (upcomingMovie?.vote_average).toFixed(1) }}</p>
+    </button>
+  </div>
+  }
+
+  <button class="more-movie">
+    <span>More Movies</span>
+    <img src="arrow.png" alt="arrow-icon" />
+  </button>
+</section>

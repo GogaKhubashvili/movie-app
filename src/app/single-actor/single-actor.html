@@ -1,0 +1,79 @@
+<main>
+  <section class="actor-info">
+    <img
+      [src]="'https://image.tmdb.org/t/p/w185' + actorInfo()?.profile_path"
+      alt="actor photo"
+    />
+
+    <div class="actor-full-info">
+      <div class="one-info">
+        <span class="title-info">Name:</span>
+        <span class="actor-name">{{ actorInfo()?.name }}</span>
+      </div>
+
+      <!-- <div class="one-info">
+        <span class="title-info">Full Name:</span>
+        <span class="actor-full-name">{{ actorInfo()?.also_known_as[0] }}</span>
+      </div> -->
+
+      <div class="one-info">
+        <span class="title-info">Birthday:</span>
+        <span class="actor-bday">{{ actorInfo()?.birthday }}</span>
+      </div>
+
+      <div class="one-info">
+        <span class="title-info">Birthday Place:</span>
+        <span class="actor-place">{{ actorInfo()?.place_of_birth }}</span>
+      </div>
+
+      <div class="one-info">
+        <span class="title-info">Gender:</span>
+        <span class="actor-gender">
+          {{ actorInfo()?.gender === 1 ? "Female" : "Male" }}
+        </span>
+      </div>
+
+      <div class="one-info">
+        <span class="title-info">Popularity:</span>
+        <span class="actor-full-name">{{
+          actorInfo()?.popularity.toFixed(2)
+        }}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="bio-info">
+    <h2 class="title-info">Biography:</h2>
+    <span>
+      @if(isBiographyExpanded()){
+      <span class="actor-bio">{{ actorInfo()?.biography }}</span>
+      }@else {
+      <span class="actor-bio">{{ actorInfo()?.biography | twentyWords }}</span>
+      }
+      <span class="more" (click)="toggleBiography()">{{
+        isBiographyExpanded() ? "Less" : "More"
+      }}</span>
+    </span>
+  </section>
+
+  <h1>All Movies:</h1>
+  <section class="actor-movies">
+    @for(movie of actorInfo()?.movie_credits.cast; track movie.id){
+    <div class="single-movie" (click)="goToMovieDetails(movie.id)">
+      @if(movie?.poster_path){
+      <img
+        [src]="'https://image.tmdb.org/t/p/w500' + movie?.poster_path"
+        alt="movie-poster"
+      />
+      }@else {
+      <img
+        src="no-image-icon.png"
+        alt="No Image Available"
+        class="actor-profile-img placeholder"
+      />
+      }
+      <div>{{ movie?.title }}</div>
+    </div>
+    }
+  </section>
+</main>

@@ -1,0 +1,55 @@
+.main-div {
+  //   background-color: #fec302;
+  // border: 2px solid tomato;
+  //   border-radius: 10px;
+  padding: 10px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .icon {
+    // border: 2px solid white;
+    padding: 35px;
+    border-radius: 10px;
+    position: relative;
+
+    img {
+      width: 70px;
+    }
+
+    .light {
+      // border: 1px solid white;
+      position: absolute;
+      height: 70px;
+      width: 170px;
+      // background-color: #ffed29;
+      // transform: matrix(1px);
+      clip-path: polygon(0% 30%, 100% 0%, 100% 100%, 0% 70%);
+      animation: film 1s ease-in-out infinite;
+
+      top: 35px;
+      left: 99px;
+      background: linear-gradient(to right, #ffed29c1, #ffed2900);
+    }
+  }
+
+  .text {
+    font-size: 25px;
+    color: #75fb4c;
+  }
+}
+
+@keyframes film {
+  0% {
+    clip-path: polygon(0% 30%, 100% 0%, 100% 100%, 0% 70%);
+  }
+
+  50% {
+    clip-path: polygon(0% 30%, 100% 10%, 100% 90%, 0% 70%);
+  }
+
+  100% {
+    clip-path: polygon(0% 30%, 100% 0%, 100% 100%, 0% 70%);
+  }
+}

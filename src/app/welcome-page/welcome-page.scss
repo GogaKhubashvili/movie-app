@@ -1,0 +1,138 @@
+.all-movies {
+  padding: 10px 0;
+  // border: 2px white solid;
+  border-radius: 10px;
+  display: flex;
+  gap: 10px;
+  overflow-x: scroll;
+  height: 450px;
+  margin-bottom: 50px;
+  margin-top: 10px;
+  align-items: center;
+
+  &::-webkit-scrollbar {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(144, 238, 144, 0.688);
+    border-radius: 10px;
+  }
+
+  .single-movie {
+    padding: 10px;
+    border: 2px lightgreen solid;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    height: 400px;
+
+    h4 {
+      transition: all 0.15s ease-in-out;
+
+      &:hover {
+        cursor: pointer;
+        color: lightgreen;
+      }
+    }
+
+    button {
+      position: absolute;
+    }
+
+    .poster {
+      width: 200px;
+    }
+
+    .pop-btn,
+    .rating-btn,
+    .play-btn {
+      right: 5px;
+      bottom: 70px;
+      width: 50px;
+      height: 50px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100px;
+      cursor: auto;
+
+      .text {
+        font-size: 5px;
+      }
+
+      &:hover {
+        background-color: black;
+      }
+    }
+
+    .rating-btn {
+      left: 5px;
+    }
+
+    .play-btn {
+      cursor: pointer;
+      top: 5px;
+      width: 30px;
+      height: 30px;
+
+      .play-text {
+        position: absolute;
+        background-color: black;
+        padding: 10px;
+        font-size: 13px;
+        bottom: -45px;
+        left: -80px;
+        display: none;
+        touch-action: none;
+        border-radius: 5px;
+        border: 1px solid lightgreen;
+      }
+
+      &:hover {
+        background-color: #277bc7;
+
+        .play-text {
+          display: flex;
+        }
+      }
+
+      img {
+        width: 20px;
+      }
+    }
+  }
+
+  .more-movie {
+    justify-self: center;
+    height: 100px;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: none;
+    background-color: transparent;
+
+    &:hover {
+      span {
+        color: lightgreen;
+      }
+
+      img {
+        transform: translateX(5px);
+      }
+    }
+
+    img {
+      width: 30px;
+      transition: all 0.15s ease-in-out;
+    }
+  }
+}
