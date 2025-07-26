@@ -45,7 +45,7 @@
   <section class="bio-info">
     <h2 class="title-info">Biography:</h2>
     <span>
-      @if(isBiographyExpanded()){
+      @if(actorInfo()?.biography){ @if(isBiographyExpanded()){
       <span class="actor-bio">{{ actorInfo()?.biography }}</span>
       }@else {
       <span class="actor-bio">{{ actorInfo()?.biography | twentyWords }}</span>
@@ -53,6 +53,9 @@
       <span class="more" (click)="toggleBiography()">{{
         isBiographyExpanded() ? "Less" : "More"
       }}</span>
+      }@else {
+      <span>No Infomation</span>
+      }
     </span>
   </section>
 

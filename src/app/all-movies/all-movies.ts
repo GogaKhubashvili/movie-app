@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Loader } from '../loader/loader';
 import { Search } from '../search/search';
+import { debounceTime, delay, of, timer } from 'rxjs';
 
 @Component({
   selector: 'app-all-movies',
@@ -33,15 +34,23 @@ export class AllMovies {
   loader: boolean = false;
 
   ngOnInit() {
-    this.route.queryParams.subscribe((params) => {
-      const searchQuery = params['q'];
-      if (searchQuery) {
-        this.search(searchQuery);
-      } else {
-        this.movies = [];
-        this.searchAttempted = false;
-      }
-    });
+    this.loader = true;
+
+    of(null)
+      .pipe(delay(3000))
+      // ALSO CAN USE TIMER FUNCTION - NO UPPER CODE!!!
+      // timer(3000)
+      .subscribe(() => {
+        this.route.queryParams.subscribe((params) => {
+          const searchQuery = params['q'];
+          if (searchQuery) {
+            this.search(searchQuery);
+          } else {
+            this.movies = [];
+            this.searchAttempted = false;
+          }
+        });
+      });
   }
 
   search(searchQuery: string) {
